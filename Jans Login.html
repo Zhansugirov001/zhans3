@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+     <title>Jans</title>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Jansigurov</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Atyn kim?" required>
+            <button type="submit">Kirgiz tez</button>
+        </form>
+        <p id="errorMessage" style="color: red;"></p>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault(); 
+        let username = document.getElementById("username").value.trim(); // Remove spaces
+        
+        // List of valid names and their respective pages
+        let users = {
+            "Ақнұр": "aknur.html",
+            "Алия": "aliya.html",
+            "Алина": "alina.html",
+            "Айсауле": "aisaule.html",
+            "Назерке": "naz.html",
+            "Аяна": "ayana.html",
+            "Ұлдана": "uldana.html",
+            "Мадина": "madina.html",
+            "Мейірім": "meiirim.html",
+            "Меруерт": "meruert.html",
+            "Қарақат": "karakat.html"
+        };
+
+        // Redirect if the name exists in the list
+        if (users[username]) {
+            window.location.href = users[username];
+        } else {
+            document.getElementById("errorMessage").textContent = "Атынды дұрыс жазшиш";
+        }
+    });
+
+        gsap.from('.login-container', {opacity: 0, duration: 1, delay:1, y: 30});
+    </script>
+</body>
+</html>

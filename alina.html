@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal@4"></script>
+    <title>Jans</title>
+</head>
+<body>
+    <audio autoplay>
+        <source src="assets/music/spotidownloader.com - Pink + White - Frank Ocean.mp3" type="audio/mpeg">
+    </audio>
+    <header>
+        <a href="#">Jans</a>
+    </header>
+    <section class="nauryz">
+        <h1 class="soz">8 Наурыз</h1>
+        <p class="sozn">Бұл тамаша көктем мерекесі әйелге тән әдемілік пен нәзіктіктің мәңгі белгісі сияқты. Жылдың ең аяулы, жарқын және тамаша күні!<br>
+            Құрметті арулар,  шаңырақтарыңыз бен өмірлеріңіз жылулыққа толы болсын. Табиғаттың әсемдігі сарқылмайтын шабыт сыйласын. Көктемнің өмірлеріңіздегі өте қалаулы және әдемі оқиғаның бастамасын білдірсін!<br>
+            Мейрамдарыңызбен!</p>
+    </section>
+    <section class="album">
+        <h1 class="al">Жарқын естеліктер</h1>
+        <div class="image">
+            <img class="img0" src="assets/img/467932647_1485448052129845_3139836057424021742_n.jpg" alt="">
+            <img class="img1" src="assets/img/470949260_1342484543782264_6623131054325618751_n.jpg" alt="">
+            <img class="img3" src="assets/img/25ee56d1-11f4-4b95-be1e-c28f06090c34.jpg" alt="">
+        </div>
+    </section>
+    <section class="shakiru">
+        <h1 class="sh">Шақыру билеті</h1>
+        <img class="a" src="assets/img/aknur.jpg" alt="">
+        <p class="ako">Құрметті Алина! <br>
+            Көктемнің шуағы төгілген, әсемдік пен нәзіктікке толы 8 наурыз – Халықаралық әйелдер күні құтты болсын! <br>
+            Сенің айналаңа шексіз жылулық, мейірім мен қуаныш сыйлайтын ерекше жан екеніңді білемін. Сенің күлкің – көктемнің самалындай, жан дүниең – әдемі гүлдей. Осы тамаша мерекеде сені шын жүректен құттықтап, ерекше кешке шақырғымыз келеді! <br>
+            Уақыты: 9 наурыз, 18:00 <br>
+            Өтетін орны: Cocoon Restobar, Шостакович көшесі, 1/3 <br>
+            Бұл кеш – сені құрметтеп, қуаныш сыйлау үшін ұйымдастырылған. Көңіл көтеріп, әдемі естеліктер қалдыруға дайын бол! Сенің келуің біз үшін үлкен мәртебе! <br>
+            Құрметпен, Жансүгіровтың батырлары мен Әділхан.</p>
+        <div class="hero">
+            <h1>Біздің кешімізге дейін</h1>
+            <div class="timebox">
+                <div class="time">
+                    <h2 id="days">00</h2>
+                    <p>Күн</p>
+                </div>
+                <div class="time">
+                    <h2 id="hours">00</h2>
+                    <p>Сағат</p>
+                </div>
+                <div class="time">
+                    <h2 id="minutes">00</h2>
+                    <p>Минут</p>
+                </div>
+                <div class="time">
+                    <h2 id="seconds">00</h2>
+                    <p>Секунд</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        gsap.from('.soz', {opacity: 0, duration: 1, delay:1, y: 30})
+        gsap.from('.sozn', {opacity: 0, duration: 2, delay:2, y: 30})
+        document.addEventListener('DOMContentLoaded', () => {
+            ScrollReveal().reveal('.al', {
+                duration: 7000,
+                distance: '100px',
+                origin: 'bottom',
+                reset: true
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            ScrollReveal().reveal('.img0', {
+                duration: 5000,
+                distance: '100px',
+                origin: 'bottom',
+                reset: true
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            ScrollReveal().reveal('.img1', {
+                duration: 5000,
+                distance: '100px',
+                origin: 'bottom',
+                reset: true
+            });
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            ScrollReveal().reveal('.img3', {
+                duration: 5000,
+                distance: '100px',
+                origin: 'bottom',
+                reset: true
+            });
+        });
+        const Days = document.getElementById('days');
+        const Hours = document.getElementById('hours');
+        const Minutes = document.getElementById('minutes');
+        const Seconds = document.getElementById('seconds');
+
+        const targetDate = new Date("March 9 2025 18:00:00").getTime();
+
+        function timer () {
+            const currentDate = new Date().getTime();
+            const distance = targetDate - currentDate;
+
+            const days = Math.floor(distance / 1000 / 60 / 60 / 24);
+            const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
+            const minutes = Math.floor(distance / 1000 / 60) % 60;
+            const seconds = Math.floor(distance / 1000) % 60;
+
+        Days.innerHTML = days;
+        Hours.innerHTML = hours;
+        Minutes.innerHTML = minutes;
+        Seconds.innerHTML = seconds;
+
+        if(distance < 0){
+            Days.innerHTML = "00";
+            Hours.innerHTML = "00";
+            Minutes.innerHTML = "00";
+            Seconds.innerHTML = "00";
+        }
+}
+
+        setInterval(timer, 1000);
+    </script>
+</body>
+</html>
